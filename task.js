@@ -25,4 +25,21 @@ Task.prototype.save = function () {
   Repo.save(this);
 }
 
-module.exports = Task;
+// module.exports = Task;
+var myTask = new Task('Legacy Task');
+myTask.complete();
+myTask.save();
+
+var urgentTask = new Task('Urgent Task');
+urgentTask.priority = 2;
+urgentTask.notify = function() {
+  console.log('notify me');
+}
+
+urgentTask.complete();
+urgentTask.save = function() {
+  this.notify();
+  Task.prototype.save.call(this);
+};
+
+urgentTask.save();
