@@ -11,11 +11,25 @@ var repo = function() {
   var save = function(task) {
     console.log('Saving ' + task.name + ' to the db');
   }
-  
+
   return {
     get: get,
     save: save
   }
 }
 
-module.exports = repo(); // being executed right here
+repo.execute = function(name){
+  var args = Array.prototype.slice.call(arguments, 1);
+
+  if (repo[name]) {
+    return repo[name].apply(repo, args);
+  }
+  return false;
+};
+
+repo.execute('save', {
+  id: 1,
+  name: 'Task 1',
+  completed: false
+});
+// module.exports = repo(); // being executed right here

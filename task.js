@@ -3,7 +3,12 @@
 var Repo = require('./taskRepo');
 var Task = function(data) {
   this.name = data.name;
-  this.completed = false;
+  this.priority = data.priority;
+  this.project = data.project;
+  this.user = data.user;
+  this.completed = data.completed;
+
+  // this.completed = false;
   // this.complete = function() {
   //   console.log('Completing Task');
   //   this.completed = true;
@@ -25,21 +30,21 @@ Task.prototype.save = function () {
   Repo.save(this);
 }
 
-// module.exports = Task;
-var myTask = new Task('Legacy Task');
-myTask.complete();
-myTask.save();
-
-var urgentTask = new Task('Urgent Task');
-urgentTask.priority = 2;
-urgentTask.notify = function() {
-  console.log('notify me');
-}
-
-urgentTask.complete();
-urgentTask.save = function() {
-  this.notify();
-  Task.prototype.save.call(this);
-};
-
-urgentTask.save();
+module.exports = Task;
+// var myTask = new Task('Legacy Task');
+// myTask.complete();
+// myTask.save();
+//
+// var urgentTask = new Task('Urgent Task');
+// urgentTask.priority = 2;
+// urgentTask.notify = function() {
+//   console.log('notify me');
+// }
+//
+// urgentTask.complete();
+// urgentTask.save = function() {
+//   this.notify();
+//   Task.prototype.save.call(this);
+// };
+//
+// urgentTask.save();
