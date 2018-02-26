@@ -27,7 +27,7 @@ Symbol.toStringTag // for strings
 Symbol.isConcatSpreadable // for concatenating
 Symbol.toPrimitive // accepts a function with a hint parameter as to how to convert this to a primitive value
 
-//              NEW Object Extensions
+//                NEW Object Extensions
 let a = {
   x: 1
 };
@@ -43,7 +43,7 @@ let amount = NaN;
 console.log(Object.is(amount, amount)); // very simular to amount === amount, this is a better way for comparison
 Object.getOwnPropertySymbols()
 
-//              NEW String Extensions
+//                NEW String Extensions
 let title = 'Santa Claus';
 console.log(title.startsWith('Santa')); // returns true, there is also
 title.endsWith('aus');
@@ -54,4 +54,56 @@ title.normalize().length // a new function we can call on a string instance to g
 title.normalize().codePointAt(7).toString(16); // prints it out with base 16
 title.normalize().fromCodePoint(0xf3c4); // sets a string from a hex value => here we get the emoji surfer
 String.raw`${title} \u{1f3c4}\n` // new function, used here as a template tag, it will do the interpolation but will print raw the unicode
-title.repeat(10); // will create 10 titles back to back 
+title.repeat(10); // will create 10 titles back to back
+
+//                NEW Number Extensions
+// Use Number.parseInt rather than just parseInt, the same with parseFloat use Number.parseFLoat
+let s = 'NaN';
+console.log(isNaN(s)); // es5 returns ture the global function converts the string in to a real NaN
+console.log(Number.isNaN(s)); // es6 returns false because it's a string
+
+let s = '8000';
+console.log(isFinite(s)); // true, global function converts it to a number
+console.log(Number.isFinite(s)); // false, it's a string not a number
+Number.isInteger() // will return false on any float/decimal
+Number.isSafeInteger() // an integer that can be accurately represented using floating point notation
+Math.pow(2, 53) -1; // Math.power 2 to the 53rd power minus one is the highest number you can have with .isSafeInteger()
+Number.EPSILON
+Number.MAX_SAFE_INTEGER
+Number.MIN_SAFE_INTEGER
+
+//                  NEW Math Extensions
+// Hyperbolic Functions
+cosh() // cosign
+tanh() // tangent
+sinh() // sign
+acosh(), asinh(), atanh(), hypot()
+
+// Arithmetic Functions
+cbrt() // Cube root
+clz32() // count leading zeros (32 bit integers)
+expm1() // equal to exp(x) - 1
+log2() // log base 2
+log10() // log base 10
+log1p() // equal to log(x+1)
+imul() // 32 bit integer multiplication
+
+// Miscellaneous Functions
+sign() // the numbers sign: 1, -1, 0, -0, NaN
+trunc() // the integer part of a number
+fround() // round to nearest 32 bit floating-point value
+
+//                  NEW RegExp Extensions
+let pattern = /\u{1f3c4}/u; // the last 'u' is a flag for unicode
+console.log(pattern.test('🏄'));
+
+let pattern = /900/y // the y flag performs the search from the last index and the last index only
+console.log(pattern.lastIndex);
+let pattern = /900/yg
+console.log(pattern.flags); // returns gy, tells us what flags were set for that regular expression in this order 'gimuy'
+
+//                  NEW Function Extensions
+let fn = function calc() {return;}
+console.log(fn.name); // returns calc
+// if the function is annonymous .name will spit back the variable as the name
+// fn.name is no writeable but it is configurable through Object.defineProperty()
