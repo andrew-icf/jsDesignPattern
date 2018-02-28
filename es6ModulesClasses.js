@@ -1,4 +1,3 @@
-console.log('HI');
 // import statements get hoisted and dependencies will execute first
 import someValue from 'base.js'; // no brackets and this will import the default export
 import * as values from 'base.js'
@@ -70,7 +69,7 @@ console.log(otherProject.getTaskCount()); // returns 57, using super in an objec
 
 class Proj {
   constructor() { let location = 'Denver'} // returns undefined, using let, const or var it goes out of scope very quickly and will not be attached to an instance
-}        //use this.location = 'Denver' to attach to this instance
+}        // **** use this.location = 'Denver' to attach to this instance ****
 
 class Project {
   static getDefaultId() { // you can only create static methods, not properties. We can still create static properties like in es5 ex: Project.id = 99; outside of the code block

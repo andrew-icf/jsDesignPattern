@@ -106,4 +106,4 @@ console.log(pattern.flags); // returns gy, tells us what flags were set for that
 let fn = function calc() {return;}
 console.log(fn.name); // returns calc
 // if the function is annonymous .name will spit back the variable as the name
-// fn.name is no writeable but it is configurable through Object.defineProperty()
+// fn.name is not writeable but it is configurable through Object.defineProperty()
