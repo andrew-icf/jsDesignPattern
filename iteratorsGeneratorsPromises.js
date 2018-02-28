@@ -76,3 +76,8 @@ Promise.race([p1, p2]).then(
   function(reason) { console.log('nope');}
 );
 // .race will return the FIRST one that resolves, a race to complete first no matter rejected or resolved
+// .all - wait success of all, fail if just one
+// .some(arr, N) - wait success of N, fail when impossible to fulfill N (because arr.length - N + 1 have failed)
+// .any(arr) - wait for success of 1, fail when impossible to fulfill 1 (only when everyone fails)
+// .race(arr) - wait for 1 promise to succeed, fail if just a single one fails.
+// .settle(arr) - wait for all promises to settle (either with a value or with an error, doesnt matter)
