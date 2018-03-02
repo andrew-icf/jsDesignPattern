@@ -91,3 +91,13 @@ perks.has('Car'); // true
 perks.keys();
 perks.values();
 perks.entries();
+
+//              Subclassing (extending these objects )
+// we can subclass arrays, regexp, functions, promises, boolean, number, sting, map, and set
+// ***** Currently there are no compilers or polyfils that support Subclassing ***** EDGE works but not Babel,Typescript etc
+class Perks extends Array {
+
+}
+let a = Perks.from([5, 10, 15]); // the from method comes directly from array
+console.log(a instanceof Perks); // true
+console.log(a.length); // 3, we have access to what Array provides
