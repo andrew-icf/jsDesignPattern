@@ -1,13 +1,13 @@
 'use strict';
 let salaries = Array(9000);
-console.log(salaries.length); // returns 9000 (es5)
-let salaries = Array.of(9000); // creates an array with just that value
+console.log(salaries.length); // returns 9000 indexes (es5)
+let salaries = Array.of(9000); // creates an array with just one index with that value
 console.log(salaries.length); // returns one (es6)
 let amounts = [8, 9, 10];
 let salaries = Array.from(amounts, function(v) { return v + this.adj}, {adj: 100}); // Array.from creates a new array with it manipulated with the lambda function
 console.log(salaries); // [108, 109, 110]
 // There is a thrid parameter in Array.from that represents an object that will become 'this' within the Fn
-// ******** Arrow Functions will not let you changed the 'this' keyword ******** V => v + this.adj will not work above (NaN)
+// ******** Arrow Functions will not let you change the 'this' keyword ******** V => v + this.adj will not work above (NaN)
 amounts.fill(11); // returns [11, 11, 11] fill is a new function that extends the array object - IT WILL fill the entire array with that one value
 amounts.fill(11, 1); // [8, 11, 11] the second param represents where you want to start filling
 amounts.fill(11, 1, 2); // [8, 11, 9] the third param represents an index to stop at that's not inclusive of the index

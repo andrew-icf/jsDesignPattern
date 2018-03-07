@@ -41,7 +41,6 @@ Object.assign(target, a, b); // will populate a target with all of the other pro
 // Object.assign will call directly on the properties it will NOT go up the prototype chain at all
 let amount = NaN;
 console.log(Object.is(amount, amount)); // very simular to amount === amount, this is a better way for comparison
-Object.getOwnPropertySymbols()
 
 //                NEW String Extensions
 let title = 'Santa Claus';

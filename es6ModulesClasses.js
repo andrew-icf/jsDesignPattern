@@ -51,7 +51,6 @@ class Project {
 class AnotherProject {
   getTaskCount(){
     return 6;
-    // return super.getTaskCount() + 6; // returns 56. The JS engine will look up the prototype chain for a getTaskCount
   }
 }
 let p = new AnotherProject();
@@ -62,8 +61,9 @@ let project = {
   getTaskCount() { return 50;}
 }
 let otherProject = {
-  getTaskCount() { return super.getTaskCount() + 7;}
+  getTaskCount() { return super.getTaskCount() + 7;} // returns 57. The JS engine will look up the prototype chain for a getTaskCount
 }
+
 Object.setPrototypeOf(otherProject, project);
 console.log(otherProject.getTaskCount()); // returns 57, using super in an object literal is valid you just need to make sure that your prototype is set up right
 
